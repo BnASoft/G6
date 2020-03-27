@@ -11,7 +11,7 @@ export default class Graph {
   };
   isDirected: boolean;
 
-  public constructor(isDirected: boolean) {
+  public constructor(isDirected?: boolean) {
     this.vertices = {}
     this.edges = {}
     this.isDirected = isDirected

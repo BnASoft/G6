@@ -36,9 +36,9 @@ describe('combo node test', () => {
     });
   });
 
-  describe.only('nodes test', () => {
+  describe('nodes test', () => {
     const factory = Shape.getFactory('combo');
-    it.only('circle no label', () => {
+    it('circle no label', () => {
       const group = canvas.addGroup();
       translate(group, { x: 50, y: 50 });
       const shape = factory.draw(
@@ -70,7 +70,7 @@ describe('combo node test', () => {
       expect(group.getCount()).toBe(2);
     });
 
-    it.only('rect', () => {
+    it('rect', () => {
       const group = canvas.addGroup({
         id: 'rect',
       });
