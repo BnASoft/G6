@@ -3,14 +3,12 @@ import Comparator from '../Comparator'
 
 // 优先队列与最小堆基本相同，除过比较两个元素时更关注优先级而不是元素的值
 export default class PriorityQueue extends MinHeap {
-  private priorities: {
-    [key: string]: number
-  }
+  private priorities
 
   constructor() {
     super()
 
-    this.priorities = {}
+    this.priorities = new Map()
 
     // 使用自定义比较函数，比较元素的顺序而不是元素的值
     this.compare = new Comparator(this.comparePriority.bind(this))
@@ -22,7 +20,7 @@ export default class PriorityQueue extends MinHeap {
    * @param priority 优先级
    */
   public add(item: string, priority = 0) {
-    this.priorities[item] = priority
+    this.priorities.set(item, priority)
     super.add(item)
     return this
   }
@@ -34,7 +32,7 @@ export default class PriorityQueue extends MinHeap {
    */
   public remove(item: string, customFindingComparator) {
     super.remove(item, customFindingComparator)
-    delete this.priorities[item]
+    this.priorities.delete(item)
     return this
   }
 
@@ -71,11 +69,11 @@ export default class PriorityQueue extends MinHeap {
    * @param b 
    */
   public comparePriority(a: string, b: string) {
-    if(this.priorities[a] === this.priorities[b]) {
+    if(this.priorities.get(a) === this.priorities.get(b)) {
       return 0
     }
 
-    return this.priorities[a] < this.priorities[b] ? -1 : 1
+    return this.priorities.get(a) < this.priorities.get(b) ? -1 : 1
   }
 
   /**

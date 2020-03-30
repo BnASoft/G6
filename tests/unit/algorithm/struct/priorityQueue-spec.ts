@@ -20,9 +20,9 @@ describe('PriorityQueue', () => {
     expect(priorityQueue.peek()).toBe(100);
   });
 
-  it('should be possible to use objects in priority queue', () => {
+  it.only('should be possible to use objects in priority queue', () => {
     const priorityQueue = new PriorityQueue();
-
+debugger
     const user1 = { name: 'Mike' };
     const user2 = { name: 'Bill' };
     const user3 = { name: 'Jane' };

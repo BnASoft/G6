@@ -31,7 +31,6 @@ export default function dijkstra(graph: Graph, startVertex: GraphVertex) {
 
     // 遍历当前节点没有访问的所有邻居节点
     currentVertex.getNeighbors().forEach((neighbor: GraphVertex) => {
-      console.log(neighbor.getKey(), distances[neighbor.getKey()])
       // 不访问已经访问过的节点
       if(!visitedVertices[neighbor.getKey()]) {
         // 更新当前节点到每个邻居的距离
@@ -43,12 +42,12 @@ export default function dijkstra(graph: Graph, startVertex: GraphVertex) {
         // 如果找到距离邻居最短的路径则更新
         if(distanceToNeighborFromCurrent < existingDistanceToNeighbor) {
           distances[neighbor.getKey()] = distanceToNeighborFromCurrent
-          console.log('前面', queue)
+          
           // 更改优先队列中邻居节点的优先级，因为它的距离更近
           if(queue.hasValue(neighbor.getKey())) {
             queue.changePriority(neighbor.getKey(), distances[neighbor.getKey()])
           }
-          console.log('后面', queue)
+          
           // 记录上一个最近的节点
           previousVertices[neighbor.getKey()] = currentVertex
         }

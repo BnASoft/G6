@@ -55,6 +55,13 @@ export default class Graph {
   }
 
   /**
+   * 获取所有边
+   */
+  public getAllEdges(): GraphEdge[] {
+    return Object.values(this.edges)
+  }
+
+  /**
    * 添加一条边
    * @param edge 边实例
    */
@@ -134,6 +141,7 @@ export default class Graph {
     vertices.forEach((vertex: Vertex, index: number) => {
       vertex.getNeighbors().forEach((neighbor: Vertex) => {
         const neighborIndex = verticesIndices[neighbor.getKey()]
+        console.log('找到边没有', this.findEdge(vertex, neighbor))
         adjacencyMatrix[index][neighborIndex] = this.findEdge(vertex, neighbor).weight
       })
     })
